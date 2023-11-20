@@ -14,4 +14,9 @@ default_vpc_cidr = "172.31.0.0/16"
 default_route_table_id = "rtb-06e19adf24654cd7f"
 account_no       = "299627189740"
 
+#rds
 instance_class   = "db.t3.medium"
+
+#docdb
+docdb_instance_count = 1
+docdb_instance_class = "db.t3.medium"
