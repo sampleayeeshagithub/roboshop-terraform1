@@ -1,5 +1,7 @@
 env               = "dev"
 project_name      = "roboshop"
+kms_key_id       = "arn:aws:kms:us-east-1:299627189740:key/20d4c346-4cde-4977-b03b-c758bef825a5"
+
 
 vpc_cidr               = "10.0.0.0/16"
 public_subnets         = ["10.0.0.0/24", "10.0.1.0/24"]
@@ -11,3 +13,5 @@ default_vpc_id   = "vpc-0c863870f98908e1b"
 default_vpc_cidr = "172.31.0.0/16"
 default_route_table_id = "rtb-06e19adf24654cd7f"
 account_no       = "299627189740"
+
+instance_class   = "db.t3.medium"
