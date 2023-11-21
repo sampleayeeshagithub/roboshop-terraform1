@@ -60,3 +60,21 @@ module "rabbitmq" {
   kms_key_id             = var.kms_key_id
   rabbitmq_instance_type = var.rabbitmq_instance_type
 }
+
+module "ms-components" {
+  source = "git::https://github.com/sampleayeeshagithub/tf-module-app.git"
+
+  for_each               = var.components
+  component              = each.key
+  env                    = var.env
+  subnets                = module.vpc.db_subnets
+  vpc_cidr               = var.vpc_cidr
+  vpc_id                 = module.vpc.vpc_id
+  kms_key_id             = var.kms_key_id
+  instance_count         = each.value["count"]
+  prometheus_cidr        = var.prometheus_cidr
+  bastion_node_cidr      = var.bastion_node_cidr
+  instance_type          = each.value["instance_type"]
+  app_port               = each.value["app_port"]
+
+}
