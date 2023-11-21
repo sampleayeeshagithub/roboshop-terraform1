@@ -13,3 +13,5 @@ variable "kms_key_id" {}
 variable "instance_class" {}
 variable "docdb_instance_count" {}
 variable "docdb_instance_class" {}
+variable "ec_node_type" {}
+variable "ec_node_count" {}
