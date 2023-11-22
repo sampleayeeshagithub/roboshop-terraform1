@@ -1,8 +1,8 @@
 env               = "dev"
 project_name      = "roboshop"
 kms_key_id       = "arn:aws:kms:us-east-1:299627189740:key/20d4c346-4cde-4977-b03b-c758bef825a5"
-bastion_node_cidr= [ "172.31.29.231/32" ]
-prometheus_cidr  = [ "172.31.20.245/32" ]
+bastion_node_cidr= ["172.31.29.231/32"]
+prometheus_cidr  = ["172.31.20.245/32"]
 
 ##vpc
 vpc_cidr               = "10.0.0.0/16"
@@ -33,43 +33,36 @@ rabbitmq_instance_type = "t3.micro"
 components = {
   frontend = {
     count                  = 1
-    instance_type          = "t3.micro"
     app_port               = 80
-
   }
+
   catalogue = {
     count                  = 1
-    instance_type          = "t3.micro"
     app_port               = 8080
-
   }
+
   cart = {
     count                  = 1
-    instance_type          = "t3.micro"
     app_port               = 8080
-
   }
+
   user = {
     count                  = 1
-    instance_type          = "t3.micro"
     app_port               = 8080
-
   }
+
   shipping = {
     count                  = 1
-    instance_type          = "t3.micro"
     app_port               = 8080
-
   }
+
   payment = {
     count         = 1
-    instance_type = "t3.micro"
     app_port      = 8080
   }
 
   dispatch = {
     count                  = 1
-    instance_type          = "t3.micro"
     app_port               = 8080
   }
 }
