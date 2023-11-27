@@ -62,7 +62,7 @@ module "rabbitmq" {
 }
 
 module "ms-components" {
-  source = "git::https://github.com/sampleayeeshagithub/tf-module-app.git"
+  source = "git::https://github.com/raghudevopsb75/tf-module-app.git"
 
   for_each               = var.components
   component              = each.key
