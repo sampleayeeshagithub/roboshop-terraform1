@@ -76,4 +76,23 @@ module "ms-components" {
   bastion_node_cidr      = var.bastion_node_cidr
   instance_type          = each.value["instance_type"]
   app_port               = each.value["app_port"]
+  alb_dns_name           = lookup(lookup(module.alb, each.value["lb_type"], null), "alb_dns_name", null)
+  zone_id                = "Z0073724138YO075ETFE9"
+  listener_arn           = lookup(lookup(module.alb, each.value["lb_type"], null), "listener_arn", null)
+  listener_rule_priority = each.value["listener_rule_priority"]
+}
+
+module "alb" {
+  source            = "git::https://github.com/sampleayeeshagithub/tf-module-alb.git"
+  for_each          = var.alb
+  alb_sg_allow_cidr = each.value["alb_sg_allow_cidr"]
+  alb_type          = each.key
+  env               = var.env
+  internal          = each.value["internal"]
+  subnets           = each.key == "private" ? module.vpc.app_subnets : module.vpc.public_subnets
+  vpc_id            = module.vpc.vpc_id
+  port              = each.value["port"]
+  protocol          = each.value["protocol"]
+  ssl_policy        = each.value["ssl_policy"]
+  certificate_arn   = each.value["certificate_arn"]
 }
